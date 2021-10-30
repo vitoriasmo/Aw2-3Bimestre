@@ -1,0 +1,82 @@
+<?php
+	
+
+	require_once 'usuarios.php';
+	$u = new Usuario;
+	?>
+	
+
+	
+
+	<!DOCTYPE HTML>
+	<html>
+	    <head>
+	        <title>Cadastro</title>
+	    </head>
+	    <body>
+	
+
+	  
+	    <form method='post'>
+	    <input type="text" placeholder =" Nome" name="nome"maxlenght = "100"> <br>
+	    <input type="text" placeholder =" Celular" name="celular"maxlenght = "11"> <br>
+	   <input type="email" placeholder =" email" name="email"maxlenght = "100"> <br>
+	   <input type="password" placeholder =" Senha"name= "senha"maxlenght = "20"><br>
+	
+	  <input type="submit" name = "Cadastrar">
+	</form>
+	<?php
+	 if(isset($_POST['nome'])){
+	
+
+	    $nome = addslashes($_POST['nome']);
+	    $telefone = addslashes($_POST['celular']);
+	    $email = addslashes($_POST['email']);
+	    $senha = addslashes($_POST['senha']);
+	
+	
+
+	    if(!empty($nome) && !empty($telefone) && !empty($email) && !empty($senha) {
+	
+
+	$u->conectar("projeto_loginn", "localhost", "root", "");
+	    if($senha == $confirmarsenha){
+	    if($u->cadastrar($nome, $telefone, $email, $senha))
+	    {
+	 echo"cadastrado";
+	
+
+	
+
+	    }
+	    else{
+	
+
+	        echo"ja cadastrado";
+	    }
+	    }
+	    else{
+	
+
+	        echo "sem correspondencia";
+	    }
+	
+
+	
+
+	  }
+	else{
+	
+
+	    echo "Preencha";
+	}
+	}
+	    
+	?>
+	
+
+	
+
+	    </body>
+	</html>
+
